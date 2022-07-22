@@ -60,7 +60,7 @@ if (appName) {
 		await open(input, options);
 	} else {
 		const stdin = await getStdin.buffer();
-		const type = await FileType.fromBuffer(stdin);
+		const type = await FileType.fileTypeFromBuffer(stdin);
 		const extension = cli.flags.extension ?? type?.ext ?? 'txt';
 		const filePath = await tempy.write(stdin, {extension});
 		await open(filePath, options);
